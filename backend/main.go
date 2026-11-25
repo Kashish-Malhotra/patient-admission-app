@@ -30,8 +30,8 @@ func cors(next http.Handler) http.Handler {
 func main() {
 	// Load environment variables from .env file
 	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found; using environment variables")
 	}
 
 	db, err := database.Connect()
